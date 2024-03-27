@@ -29,7 +29,8 @@ async function getResponse(url, method, headers, body) {
     }
 }
 
-app.post('/', async (req, res) => {
+// 使用 app.use() 代替 app.post()
+app.use('/', async (req, res) => {
     try {
         const wxid = req.headers.wxid;
         if (!wxid) {
