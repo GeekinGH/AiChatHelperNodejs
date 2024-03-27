@@ -5,6 +5,28 @@ only for 微信助手<br>
 
 ## 部署
 1. 部署到安装了nodejs环境的服务器即可
+2. 使用 PPA 安装 NodeJS
+```bash
+$ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+$ sudo apt update -y
+$ sudo apt install nodejs -y
+$ node -v
+$ npm -v
+```
+
+3. clone并运行
+```bash
+$ git clone git@github.com:GeekinGH/AiChatHelperNodejs.git
+$ cd AiChatHelperNodejs
+$ npm install
+$ screen -S ach
+$ node index.js
+```
+按下 Ctrl + A，然后按下 D 键来分离 screen 会话。这将使程序在后台运行。
+当您想再次查看 screen 会话时，可以运行以下命令：
+```bash
+$ screen -r ach
+```
 
 ## 使用方法
 以下操作都是在“微信助手”ChatGPT中操作：
