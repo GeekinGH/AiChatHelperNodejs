@@ -8,7 +8,7 @@ const Kimi = require('./classes/Kimi');
 const Claude3 = require('./classes/Claude3');
 
 // 授权的微信ID
-const WXID_ARRAY = ['value1', 'value2', 'value3'];
+const WXID_ARRAY = [];
 
 const app = express();
 const PORT = 3000;
