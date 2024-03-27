@@ -16,10 +16,11 @@ $ npm -v
 
 3. clone并运行
 ```bash
-$ sudo apt git nodejs -y
+$ sudo apt install git -y
 $ git clone https://github.com/GeekinGH/AiChatHelperNodejs.git
 $ cd AiChatHelperNodejs
 $ npm install
+$ sudo apt install screen -y
 $ screen -S ach
 $ node index.js
 ```
