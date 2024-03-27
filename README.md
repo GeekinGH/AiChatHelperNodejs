@@ -7,22 +7,22 @@ only for 微信助手<br>
 1. 部署到安装了nodejs环境的服务器即可
 2. 使用 PPA 安装 NodeJS
 ```bash
-$ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-$ sudo apt update -y
-$ sudo apt install nodejs -y
-$ node -v
-$ npm -v
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt update -y
+sudo apt install nodejs -y
+node -v
+npm -v
 ```
 
 3. clone并运行
 ```bash
-$ sudo apt install git -y
-$ git clone https://github.com/GeekinGH/AiChatHelperNodejs.git
-$ cd AiChatHelperNodejs
-$ npm install
-$ sudo apt install screen -y
-$ screen -S ach
-$ node index.js
+sudo apt install git -y
+git clone https://github.com/GeekinGH/AiChatHelperNodejs.git
+cd AiChatHelperNodejs
+npm install
+sudo apt install screen -y
+screen -S ach
+node index.js
 ```
 按下 Ctrl + A，然后按下 D 键来分离 screen 会话。这将使程序在后台运行。
 当您想再次查看 screen 会话时，可以运行以下命令：
