@@ -27,7 +27,7 @@ node index.js
 按下 Ctrl + A，然后按下 D 键来分离 screen 会话。这将使程序在后台运行。
 当您想再次查看 screen 会话时，可以运行以下命令：
 ```bash
-$ screen -r ach
+screen -r ach
 ```
 
 4. 如果需要进行微信ID鉴权：
@@ -37,8 +37,11 @@ index.js文件中，找到 const WXID_ARRAY = [];<br>
 ---如果你的微信ID是lambous就填写lambous、开头别加‘wxid’！<br>
 比如 const WXID_ARRAY = [wxid_abcdefg,lambous,yourxxx,abdcedf];<br>
 $\color{red}{每次修改文件必须重新运行才能生效：}$ <br>
-$\color{red}{进入对应screen会话，通过按下 Ctrl + C（在大多数情况下）来停止运行中的 Node.js 应用程序，然后再次运行 node index.js。}$
-
+$\color{red}{进入对应screen会话，通过按下 Ctrl + C（在大多数情况下）来停止运行中的 Node.js 应用程序，}$<br>
+$\color{red}{然后再次运行:}$
+```bash
+node index.js
+```
 ## 使用方法
 以下操作都是在“微信助手”ChatGPT中操作：
 1. 将你的代理地址填写到“代理地址”栏。（http&#58;&#47;&#47;你的ip:3000）
