@@ -30,6 +30,15 @@ node index.js
 $ screen -r ach
 ```
 
+4. 如果需要进行微信ID鉴权：
+index.js文件中，找到 const WXID_ARRAY = [];<br>
+在中括号中填入你需要授权的微信ID，支持多个微信ID，不同的ID用英文逗号隔开，最后一个ID后面不用加逗号。<br>
+---如果你的微信ID是wxid_abcdefg,你就填写wxid_abcdefg,别删掉了'wxid_';<br>
+---如果你的微信ID是lambous就填写lambous、开头别加‘wxid’！<br>
+比如 const WXID_ARRAY = [wxid_abcdefg,lambous,yourxxx,abdcedf];<br>
+$\color{red}{每次修改文件必须重新运行才能生效：}$ <br>
+$\color{red}{进入对应screen会话，通过按下 Ctrl + C（在大多数情况下）来停止运行中的 Node.js 应用程序，然后再次运行 node index.js。}$
+
 ## 使用方法
 以下操作都是在“微信助手”ChatGPT中操作：
 1. 将你的代理地址填写到“代理地址”栏。（http&#58;&#47;&#47;你的ip:3000）
