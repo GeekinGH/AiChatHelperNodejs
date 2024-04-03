@@ -29,7 +29,6 @@ async function getResponse(url, method, headers, body) {
     }
 }
 
-// 使用 app.use() 代替 app.post()
 app.use('/', async (req, res) => {
     try {
         const wxid = req.headers.wxid;
@@ -51,6 +50,35 @@ app.use('/', async (req, res) => {
             });
         }
 
+        let response;
+        const supportedModels = {
+            'gpt-3.5-turbo': ChatGPT,
+            'gpt-4': ChatGPT,
+            'gemini-pro': Gemini,
+            'gemini': Gemini,
+            'gemini-1.5-pro-latest': Gemini,
+            'qwen-turbo': Qwen,
+            'qwen-max': Qwen,
+            'moonshot-v1-8k': Kimi,
+            'moonshot-v1-32k': Kimi,
+            'claude-3-opus-20240229': Claude3
+        };
+        
+        const ModelClass = supportedModels[requestModel];
+        if (ModelClass) {
+            const modelInstance = new ModelClass(requestModel, requestAuthorization, requestBody.messages);
+            response = await modelInstance.handleResponse(await getResponse(modelInstance.url, 'POST', modelInstance.headers, modelInstance.body));
+        } else {
+            return res.json({
+                choices: [{
+                    message: {
+                        role: 'assistant',
+                        content: '不支持的 chat_model 类型',
+                    },
+                }],
+            });
+        }
+        
         let response;
         if (requestModel === 'gpt-3.5-turbo' || requestModel === 'gpt-4') {
             const chatGPT = new ChatGPT(requestModel, requestAuthorization, requestBody.messages);
