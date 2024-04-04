@@ -43,6 +43,17 @@ async function getResponse(url, method, headers, body) {
     }
 }
 
+function respondJsonMessage(message) {
+    return {
+        choices: [{
+            message: {
+                role: 'assistant',
+                content: message,
+            },
+        }],
+    };
+}
+
 app.use('/', async (req, res) => {
     try {
         const wxid = req.headers.wxid;
@@ -54,14 +65,7 @@ app.use('/', async (req, res) => {
         const requestModel = requestBody.model.toLowerCase().trim();
 
         if (WXID_ARRAY.length > 0 && !WXID_ARRAY.includes(wxid)) {
-            return res.json({
-                choices: [{
-                    message: {
-                        role: 'assistant',
-                        content: '我是狗，偷接口，偷了接口当小丑～',
-                    },
-                }],
-            });
+            return res.json(respondJsonMessage('我是狗，偷接口，偷了接口当小丑～'));
         }
 
         let response;
@@ -70,33 +74,12 @@ app.use('/', async (req, res) => {
             const modelInstance = new ModelClass(requestModel, requestAuthorization, requestBody.messages);
             response = await modelInstance.handleResponse(await getResponse(modelInstance.url, 'POST', modelInstance.headers, modelInstance.body));
         } else {
-            return res.json({
-                choices: [{
-                    message: {
-                        role: 'assistant',
-                        content: '不支持的 chat_model 类型',
-                    },
-                }],
-            });
+            return res.json(respondJsonMessage('不支持的 chat_model 类型'));
         }
-        return res.json({
-            choices: [{
-                message: {
-                    role: 'assistant',
-                    content: response,
-                },
-            }],
-        });
+        return res.json(respondJsonMessage(response));
     } catch (error) {
-        console.error('Error:', error); // 记录错误信息
-        return res.json({
-            choices: [{
-                message: {
-                    role: 'assistant',
-                    content: `出错了: ${error.toString()}`,
-                },
-            }],
-        });
+        console.error('Error:', error.toString()); // 记录错误信息
+        return res.json(respondJsonMessage(`出错了: ${error.toString()}`));
     }
 });
 
