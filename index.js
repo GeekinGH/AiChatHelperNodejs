@@ -7,7 +7,9 @@ const Qwen = require('./classes/Qwen');
 const Kimi = require('./classes/Kimi');
 const Claude3 = require('./classes/Claude3');
 
-// 需要对特定微信鉴权的，请在[]中填写对应微信ID，类似：[wxid_abcdefg,lambous,yourxxx,abdcedf],不添加微信ID则表示不进行鉴权
+// 需要对特定微信鉴权的，请在[]中填写对应微信ID
+//类似：['wxid_abcdefg','lambous','yourxxx','abdcedf']
+//不添加微信ID则表示不进行鉴权
 const WXID_ARRAY = [];
 
 // 全局范围定义 supportedModels（支持的模型） 对象：'模型名称':对应的AI类
