@@ -21,23 +21,23 @@ git clone https://github.com/GeekinGH/AiChatHelperNodejs.git
 cd AiChatHelperNodejs
 npm install
 sudo apt install screen -y
-screen -S ach
-node index.js
+screen -S aihelper
+node index.js(或者 npm start)
 ```
 按下 Ctrl + A，然后按下 D 键来分离 screen 会话。这将使程序在后台运行。
 当您想再次查看 screen 会话时，可以运行以下命令：
 ```bash
-screen -r ach
+screen -r aihelper
 ```
 
 4. 如果需要进行微信ID鉴权：
 index.js文件中，找到 const WXID_ARRAY = [];<br>
-在中括号中填入你需要授权的微信ID，支持多个微信ID，不同的ID用英文逗号隔开，最后一个ID后面不用加逗号。<br>
+在中括号中填入你需要授权的微信ID，支持多个微信ID，用英文引号包括，不同的ID用英文逗号隔开，最后一个ID后面不用加逗号。<br>
 ---如果你的微信ID是wxid_abcdefg,你就填写wxid_abcdefg,别删掉了'wxid_';<br>
 ---如果你的微信ID是lambous就填写lambous、开头别加‘wxid’！<br>
-比如 const WXID_ARRAY = [wxid_abcdefg,lambous,yourxxx,abdcedf];<br>
+比如 const WXID_ARRAY = ['wxid_abcdefg','lambous','yourxxx','abdcedf'];<br>
 $\color{red}{每次修改文件必须重新运行才能生效：}$ <br>
-$\color{red}{进入对应screen会话，通过按下 Ctrl + C（在大多数情况下）来停止运行中的 Node.js 应用程序，}$<br>
+$\color{red}{进入对应会话screen -r aihelper，通过按下 Ctrl + C（在大多数情况下）来停止运行中的 Node.js 应用程序，}$<br>
 $\color{red}{然后再次运行:}$
 ```bash
 node index.js
