@@ -6,6 +6,7 @@ const ChatGPT = require('./classes/ChatGPT');
 const Qwen = require('./classes/Qwen');
 const Kimi = require('./classes/Kimi');
 const Claude3 = require('./classes/Claude3');
+const GPT360 = require('./classes/GPT360');
 
 //需要对特定微信鉴权的，请在[]中填写对应微信ID
 //类似：const WXID_ARRAY = ['wxid_abcdefg','lambous','yourxxx','abdcedf']
@@ -23,7 +24,8 @@ const supportedModels = {
     'qwen-max': Qwen,
     'moonshot-v1-8k': Kimi,
     'moonshot-v1-32k': Kimi,
-    'claude-3-opus-20240229': Claude3
+    'claude-3-opus-20240229': Claude3,
+    '360gpt-pro': GPT360
 };
 
 const app = express();
