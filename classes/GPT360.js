@@ -7,7 +7,7 @@ class GPT360 {
     this.formatHeaders();
     try {
       // 获取最后一条消息
-      const lastMessage = requestMessages.messages[requestMessages.messages.length - 1].content.trim();
+      const lastMessage = requestMessages[requestMessages.length - 1].content.trim();
       // 判断是否需要文生图模式
       if (lastMessage.startsWith('画')) {
         this.url = 'https://api.360.cn/v1/images/text2img';
