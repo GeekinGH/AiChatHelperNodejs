@@ -7,13 +7,13 @@ class GPT360 {
     this.formatHeaders();
     try {
       // 获取最后一条消息
-      const lastMessage = requestMessages.messages[requestMessages.messages.length - 1].content;
+      const lastMessage = requestMessages.messages[requestMessages.messages.length - 1].content.trim();
       // 判断是否需要文生图模式
       if (lastMessage.startsWith('画')) {
         this.url = 'https://api.360.cn/v1/images/text2img';
         this.model = '360CV_S0_V5';
         this.text2img = true;
-        this.formatBody_txt2img(lastMessage);
+        this.formatBodyText2Img(lastMessage);
       } else {
         this.formatBody(requestMessages);
       }
@@ -52,8 +52,13 @@ class GPT360 {
     }
   }
 
-  formatBody_txt2img(lastMessage) {
+  formatBodyText2Img(lastMessage) {
     try {
+      // 确保this.body是对象类型，否则进行初始化
+      if (typeof this.body !== 'object' || this.body === null) {
+        this.body = {};
+      }
+
       // 将提取的 lastMessage 转换为文生图格式的 body
       this.body = {
         "model": "360CV_S0_V5",
