@@ -52,10 +52,11 @@ node index.js
 | ChatGPT plus  | ChatGPT 4 API Key | 选择：gpt-4 |
 | Gemini-pro 1.0 | Gemini 1.0 API Key | 手动输入，填写：Gemini-pro |
 | Gemini-pro 1.5 | Gemini 1.5 API Key | 手动输入，填写：gemini-1.5-pro-latest |
-| 通义千问   | Qwen API Key    | 手动输入，填写：qwen-turbo(弃用) 或 qwen-max |
+| 通义千问   | Qwen API Key | 手动输入，填写：qwen-turbo(弃用) 或 qwen-max |
 | Moonshot Kimi | Kimi API Key  | 手动输入，填写：moonshot-v1-8k 或 moonshot-v1-32k |
 | Claude3   | Claude3 API Key | 手动输入，填写：claude-3-opus-20240229 | 
 | 360智脑   | 360 API Key | 手动输入，填写：360gpt-pro |
+3. 360AI支持文生图功能，在聊天中，话术为：画xxxxxxxx，AI则会返回一个图片链接。比如：画一个蓝天白云的图片
 
 ## 其他事项
 - 部分代码参考了懒猫提供的Gemini.zip，[懒猫插件交流](https://t.me/maogroup)
