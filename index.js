@@ -65,13 +65,6 @@ function respondJsonMessage(message) {
 
 app.use('/', async (req, res) => {
     try {
-
-        //if (req) {
-        //    console.log(req.headers);
-        //    console.log(req.body);
-        //} else {
-        //    console.log("req 未定义");
-        //}
         //Only for WeChat Assistant
         const wxid = req.headers.wxid;
         if (!wxid) {
@@ -89,7 +82,6 @@ app.use('/', async (req, res) => {
         
         const requestBody = req.body;
         let requestModel = requestBody.model.toLowerCase().trim();
-        // 获取最后一条消息
         const requestMessages = requestBody.messages;
         const lastMessage = requestMessages[requestMessages.length - 1].content.trim();
         
