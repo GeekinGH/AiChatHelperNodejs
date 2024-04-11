@@ -13,6 +13,9 @@ const GPT360 = require('./classes/GPT360');
 //[]内不添加微信ID则表示不进行鉴权
 const WXID_ARRAY = [];
 
+//360 API Key
+const APIKEY360 = "";
+
 // 全局范围定义 supportedModels（支持的模型），格式：'模型名称':对应的AI类
 const supportedModels = {
     'gpt-3.5-turbo': ChatGPT,
@@ -62,6 +65,13 @@ function respondJsonMessage(message) {
 
 app.use('/', async (req, res) => {
     try {
+
+        //if (req) {
+        //    console.log(req.headers);
+        //    console.log(req.body);
+        //} else {
+        //    console.log("req 未定义");
+        //}
         //Only for WeChat Assistant
         const wxid = req.headers.wxid;
         if (!wxid) {
@@ -72,19 +82,30 @@ app.use('/', async (req, res) => {
             return res.json(respondJsonMessage('我是狗，偷接口，偷了接口当小丑～'));
         }
         
-        const requestAuthorization = req.headers.authorization;
+        let requestAuthorization = req.headers.authorization;
         if (!requestAuthorization) {
             throw new Error('未提供 API Key');
         }
         
         const requestBody = req.body;
-        const requestModel = requestBody.model.toLowerCase().trim();
-
+        let requestModel = requestBody.model.toLowerCase().trim();
+        // 获取最后一条消息
+        const requestMessages = requestBody.messages;
+        const lastMessage = requestMessages[requestMessages.length - 1].content.trim();
+        
+         // 判断是否需要文生图模式
+        if (APIKEY360 !== "" && lastMessage.startsWith("画")) {
+        requestModel = "360gpt-pro";
+        requestAuthorization = APIKEY360;
+        }
+        
         let response;
         const ModelClass = supportedModels[requestModel];
+        
         if (ModelClass) {
-            const modelInstance = new ModelClass(requestModel, requestAuthorization, requestBody.messages);
+            const modelInstance = new ModelClass(requestModel, requestAuthorization, requestMessages);
             response = await modelInstance.handleResponse(await getResponse(modelInstance.url, 'POST', modelInstance.headers, modelInstance.body));
+            
             return res.json(respondJsonMessage(response));
         } else {
             return res.json(respondJsonMessage('不支持的 chat_model 类型'));
