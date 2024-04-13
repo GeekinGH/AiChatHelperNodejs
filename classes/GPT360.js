@@ -44,7 +44,16 @@ class GPT360 {
       this.body = {
         'model': this.model,
         'messages': requestMessages,
-        'stream': false
+        'stream': false,
+        "tools":[
+            {
+                "type":"web_search",
+                "web_search":{
+                    "search_mode":"auto",
+                    "search_query":requestMessages[requestMessages.length - 1].content.trim()
+                }
+            }
+        ]
       };
     } catch (error) {
       console.error('Error formatting messages:', error);
