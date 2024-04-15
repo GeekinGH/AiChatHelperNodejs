@@ -68,16 +68,16 @@ app.use('/', async (req, res) => {
         //Only for WeChat Assistant
         const wxid = req.headers.wxid;
         if (!wxid) {
-            throw new Error('未提供 wxid 头部信息');
+            throw new Error('您的请求不兼容于本服务');
         }
         //WeChat ID authorization
         if (WXID_ARRAY.length > 0 && !WXID_ARRAY.includes(wxid)) {
-            return res.json(respondJsonMessage('我是狗，偷接口，偷了接口当小丑～'));
+            return res.json(respondJsonMessage('当您看到这个信息，说明您需要联系本服务提供者进行使用授权'));
         }
         
         let requestAuthorization = req.headers.authorization;
         if (!requestAuthorization) {
-            throw new Error('未提供 API Key');
+            throw new Error('请提供API鉴权码');
         }
         
         const requestBody = req.body;
