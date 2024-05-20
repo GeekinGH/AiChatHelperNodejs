@@ -2,6 +2,12 @@
 only for 微信助手<br>
 欢迎来到微信助手 ChatGPT 反向代理项目！<br>
 
+# 有三个相同功能的不同部署环境的项目：
+1、部署到Netlify的。目前Netlify注册有难度，已经有Netlify账户的可以尝试它.请移步到[AiChatHelper](https://github.com/GeekinGH/AiChatHelper)；<br><br>
+2、部署到自己的服务器或者任何可以搭建NodeJs环境的服务器的，，就是本仓库.
+3、部署到CloudFlare的，目前有新的办法可以解决Gemini区域限制和域名问题，目前来看是最省钱最简单的实现方法，请移步到[AiChatHelperCFW](https://github.com/GeekinGH/AiChatHelperCFW)；<br>
+
+
 ## 部署
 1. 部署到安装了nodejs环境的服务器即可
 2. 使用 PPA 安装 NodeJS
