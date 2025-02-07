@@ -7,6 +7,7 @@ const Qwen = require('./classes/Qwen');
 const Kimi = require('./classes/Kimi');
 const Claude3 = require('./classes/Claude3');
 const GPT360 = require('./classes/GPT360');
+const DeepSeek = require('./classes/DeepSeek');
 
 //需要对特定微信鉴权的，请在[]中填写对应微信ID
 //类似：const WXID_ARRAY = ['wxid_abcdefg','lambous','yourxxx','abdcedf']
@@ -24,12 +25,16 @@ const supportedModels = {
     'gemini-pro': Gemini,
     'gemini': Gemini,
     'gemini-1.5-pro-latest': Gemini,
+    'gemini-1.5-flash': Gemini,
+    'gemini-2.0-flash-exp': Gemini,
     'qwen-turbo': Qwen,
     'qwen-max': Qwen,
     'moonshot-v1-8k': Kimi,
     'moonshot-v1-32k': Kimi,
     'claude-3-opus-20240229': Claude3,
-    '360gpt-pro': GPT360
+    '360gpt-pro': GPT360,
+    'deepseek-chat': DeepSeek,
+    'deepseek-reasoner': DeepSeek
 };
 
 const app = express();
